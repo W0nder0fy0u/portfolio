@@ -70,7 +70,7 @@ const SOCIALS = [
 
 // Resume PDF URL — replace with your actual hosted PDF link
 // e.g. from GitHub releases, Cloudinary, or your own domain
-const RESUME_PDF_URL = '/resume.pdf';
+const RESUME_PDF_URL = '/SUBHAM_TIWARI_resume.pdf';
 
 const TREE_DATA = Array.from({ length: 8 }, (_, i) => ({
   id: i,
