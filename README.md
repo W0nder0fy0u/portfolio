@@ -2,7 +2,7 @@
 
 Personal portfolio website built with React, TypeScript, Vite, and Tailwind CSS.
 
-**Live:** [subham-tiwari-portfolio-iota-lemon-eoq98f5ct4.vercel.app](https://subham-tiwari-portfolio-iota-lemon-eoq98f5ct4.vercel.app)
+**Live:** [subham-tiwari-portfolio.vercel.app]([https://subham-tiwari-portfolio-iota-lemon-eoq98f5ct4.vercel.app](https://subham-tiwari-portfolio.vercel.app/))
 
 ---
 
