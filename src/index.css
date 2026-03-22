@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Shojumaru&display=swap');
+@import "tailwindcss";
+
+/* ─── THEME ────────────────────────────────────────────────────────────────── */
+
+@theme {
+  --font-sans:   "Rajdhani", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:   "Share Tech Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif:  "Noto Serif", ui-serif, Georgia, serif;
+  --font-jp:     "Shojumaru", system-ui, sans-serif;
+
+  /* Core palette */
+  --color-parchment-base:     #e8d8a5;
+  --color-ink-black:          #2d3436;
+  --color-ink-charcoal:       #2d3436;
+  --color-sun-red:            #d63031;
+  --color-samurai-muted-red:  #d63031;
+  --color-hill-red:           #d63031;
+  --color-rock-navy:          #1e272e;
+
+  /* Winter palette */
+  --color-snow-white:   #f8f9fa;
+  --color-forest-navy:  #1a2a3a;
+  --color-ice-blue:     #a5d8ff;
+
+  /* Semantic tokens (default = vagabond) */
+  --bg-primary:     var(--color-parchment-base);
+  --text-primary:   var(--color-ink-black);
+  --accent-primary: var(--color-sun-red);
+
+  /* Assets */
+  --noise-svg: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-url: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+}
+
+/* ─── WINTER OVERRIDES ─────────────────────────────────────────────────────── */
+
+[data-theme='winter'] {
+  --bg-primary:              var(--color-snow-white);
+  --text-primary:            var(--color-forest-navy);
+  --accent-primary:          var(--color-forest-navy);
+  --color-parchment-base:    var(--color-snow-white);
+  --color-ink-black:         var(--color-forest-navy);
+  --color-ink-charcoal:      var(--color-forest-navy);
+  --color-sun-red:           var(--color-forest-navy);
+  --color-samurai-muted-red: var(--color-forest-navy);
+}
+
+/* ─── BASE ─────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-parchment-base text-ink-charcoal font-sans antialiased overflow-x-hidden;
+  }
+
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-parchment-base; }
+  ::-webkit-scrollbar-thumb { @apply bg-samurai-muted-red rounded-full; }
+}
+
+/* ─── UTILITIES ────────────────────────────────────────────────────────────── */
+
+@layer utilities {
+  .parchment-grain {
+    background-image: var(--grain-url);
+    background-blend-mode: multiply;
+  }
+
+  .noise-overlay {
+    background-image: var(--noise-svg);
+  }
+
+  .cinematic-vignette {
+    background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.4) 100%);
+  }
+}
+
+/* ─── COMPONENTS ───────────────────────────────────────────────────────────── */
+
+@layer components {
+  /* Glass card used by skill and project cards */
+  .glass-card {
+    @apply relative bg-parchment-base/60 backdrop-blur-sm;
+  }
+
+  /* Falling petals */
+  .petal {
+    @apply absolute pointer-events-none;
+    border-radius: 50% 50% 50% 0;
+    animation: fall linear infinite;
+  }
+}
+
+/* ─── KEYFRAMES ────────────────────────────────────────────────────────────── */
+
+@keyframes fall {
+  from { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  to   { transform: translateY(110vh) rotate(400deg); opacity: 0; }
+}
